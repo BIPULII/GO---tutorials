@@ -20,4 +20,14 @@ func main() {
 	var numTickets int
 	fmt.Scan(&numTickets)
 	fmt.Printf("Thank you %v for booking %v tickets.\n", firstName, numTickets)
+	
+	// Array example
+	var bookings [50]string
+	bookings[0] = firstName
+	fmt.Printf("The first booking is: %v\n", bookings[0])
+
+	// Slice example
+	var bookingsSlice []string
+	bookingsSlice = append(bookingsSlice, firstName)
+	fmt.Printf("The first booking in the slice is: %v\n", bookingsSlice[0])
 }
