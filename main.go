@@ -58,6 +58,21 @@ func deleteContact(id int) {
     }
     fmt.Println("❌ Contact not found.")
 }
+func searchContact(name string) {
+    found := false
+
+    for _, c := range contacts {
+        if c.Name == name {
+            fmt.Printf("[%d] %s | %s | %s\n",
+                c.ID, c.Name, c.Email, c.Phone)
+            found = true
+        }
+    }
+
+    if !found {
+        fmt.Println("Contact not found.")
+    }
+}
 func showMenu() {
     fmt.Println("\n===== 📒 Contact Book =====")
     fmt.Println("1. Add Contact")
@@ -65,6 +80,7 @@ func showMenu() {
     fmt.Println("3. Update Phone")
     fmt.Println("4. Delete Contact")
     fmt.Println("5. Exit")
+	fmt.Println("6. Search Contact")
     fmt.Print("Choose: ")
 }
 
@@ -106,6 +122,11 @@ func main() {
         case 5:
             fmt.Println("👋 Goodbye!")
             return
+		case 6:
+				var name string
+				fmt.Print("Search Name: ")
+				fmt.Scan(&name)
+				searchContact(name)
         default:
             fmt.Println("⚠️  Invalid option.")
         }
