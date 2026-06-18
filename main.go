@@ -11,12 +11,13 @@ type Contact struct {
 }
 
 // Map as the "database" — key: ID, value: Contact
-var contacts = make(map[int]Contact)
+// var contacts = make(map[int]Contact)
+var contacts []Contact
 var nextID = 1
 // CREATE — pass by value, store in map
 func addContact(name, email, phone string) {
     c := Contact{ID: nextID, Name: name, Email: email, Phone: phone}
-    contacts[nextID] = c
+    contacts = append(contacts, c)
     nextID++
     fmt.Printf("✅ Contact added with ID %d\n", c.ID)
 }
@@ -34,26 +35,28 @@ func listContacts() {
 
 // UPDATE — pointer concept: why we re-assign to map
 func updateContact(id int, newPhone string , newName string, newEmail string) {
-    c, exists := contacts[id]   // comma-ok idiom
-    if !exists {
-        fmt.Println("❌ Contact not found.")
-        return
+    for i := 0; i < len(contacts); i++ {
+        if contacts[i].ID == id {
+            contacts[i].Phone = newPhone
+            contacts[i].Name = newName
+            contacts[i].Email = newEmail
+            fmt.Println("✏️  Contact updated.")
+            return
+        }
     }
-    c.Phone = newPhone
-    c.Name = newName
-    c.Email = newEmail
-    contacts[id] = c            // maps store copies — must re-assign!
-    fmt.Println("✏️  Contact updated.")
+    fmt.Println("❌ Contact not found.")
 }
 
 // DELETE — built-in delete()
 func deleteContact(id int) {
-    if _, exists := contacts[id]; !exists {
-        fmt.Println("❌ Contact not found.")
-        return
+    for i := 0; i < len(contacts); i++ {
+        if contacts[i].ID == id {
+            contacts = append(contacts[:i], contacts[i+1:]...)
+            fmt.Println("🗑️  Contact deleted.")
+            return
+        }
     }
-    delete(contacts, id)
-    fmt.Println("🗑️  Contact deleted.")
+    fmt.Println("❌ Contact not found.")
 }
 func showMenu() {
     fmt.Println("\n===== 📒 Contact Book =====")
