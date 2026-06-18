@@ -1,40 +1,3 @@
-// package main
-
-// import "fmt"
-
-// func main() {
-// 	//fmt.Println("Hello, World!");
-	
-// 	var conferenceName string = "Go Conference"
-// 	const conferenceTickets = 50
-// 	var remainingTickets = 50
-
-// 	fmt.Printf("Welcome to %v\n", conferenceName)
-// 	fmt.Println("Get your tickets here to attend the conference.");
-// 	fmt.Printf("There are %v tickets remaining.\n", remainingTickets)
-
-// 	for {
-
-// 		fmt.Printf("Enter your first name: ")
-// 		var firstName string
-// 		fmt.Scan(&firstName)
-// 		fmt.Printf("Enter the number of tickets you want to book: ")
-// 		var numTickets int
-// 		fmt.Scan(&numTickets)
-// 		fmt.Printf("Thank you %v for booking %v tickets.\n", firstName, numTickets)
-		
-// 		// Array example
-// 		var bookings [50]string
-// 		bookings[0] = firstName
-// 		fmt.Printf("The first booking is: %v\n", bookings[0])
-
-// 		// Slice example
-// 		// var bookingsSlice []string
-// 		// bookingsSlice = append(bookingsSlice, firstName)
-// 		// fmt.Printf("The first booking in the slice is: %v\n", bookingsSlice[0])
-// 	}
-	
-// }
 package main
 
 import "fmt"
@@ -70,13 +33,15 @@ func listContacts() {
 }
 
 // UPDATE — pointer concept: why we re-assign to map
-func updateContact(id int, newPhone string) {
+func updateContact(id int, newPhone string , newName string, newEmail string) {
     c, exists := contacts[id]   // comma-ok idiom
     if !exists {
         fmt.Println("❌ Contact not found.")
         return
     }
     c.Phone = newPhone
+    c.Name = newName
+    c.Email = newEmail
     contacts[id] = c            // maps store copies — must re-assign!
     fmt.Println("✏️  Contact updated.")
 }
@@ -120,12 +85,16 @@ func main() {
         case 2:
             listContacts()
         case 3:
-            var id int; var phone string
+            var id int; var phone string; var name string; var email string
             fmt.Print("ID: ")    
 			fmt.Scan(&id)
             fmt.Print("New Phone: ") 
 			fmt.Scan(&phone)
-            updateContact(id, phone)
+            fmt.Print("New Name: ") 
+			fmt.Scan(&name)
+            fmt.Print("New Email: ") 
+			fmt.Scan(&email)
+            updateContact(id, phone, name, email)
         case 4:
             var id int
             fmt.Print("ID to delete: ") 
