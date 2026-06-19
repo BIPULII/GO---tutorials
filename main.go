@@ -77,7 +77,7 @@ func showMenu() {
     fmt.Println("\n===== 📒 Contact Book =====")
     fmt.Println("1. Add Contact")
     fmt.Println("2. List Contacts")
-    fmt.Println("3. Update Phone")
+    fmt.Println("3. Update Contact")
     fmt.Println("4. Delete Contact")
     fmt.Println("5. Exit")
 	fmt.Println("6. Search Contact")
