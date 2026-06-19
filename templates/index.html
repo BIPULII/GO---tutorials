@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Contact Book</title>
+
+    <link rel="stylesheet" href="/static/style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>📒 Contact Manager</h1>
+            <p>Manage your contacts efficiently</p>
+        </header>
+
+        <div class="stats">
+            <div class="card">
+                <h2 id="count">0</h2>
+                <span>Total Contacts</span>
+            </div>
+        </div>
+
+        <div class="form-card">
+
+            <input id="name" placeholder="Name">
+
+            <input id="email" placeholder="Email">
+
+            <input id="phone" placeholder="Phone">
+
+            <button onclick="addContact()">
+                Add Contact
+            </button>
+
+        </div>
+
+        <div class="search-box">
+
+            <input
+                id="search"
+                placeholder="Search contacts..."
+                onkeyup="searchContact()">
+
+        </div>
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="contactTable">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <script src="/static/script.js"></script>
+
+</body>
+
+</html>
